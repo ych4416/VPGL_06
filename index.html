@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<head>
+    <title>Visual Programming Graphical Language and Environment</title>
+    <meta charset="UTF-8"> 
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  
+    <!--
+    <link rel="stylesheet" href="../libs/jquery-ui.css" />
+    <script src="../libs/jquery-3.4.1.min.js"></script>
+    <script src="../libs/jquery-ui.min.js"></script>
+    
+    <script type="text/javascript" src="../libs/jqconsole.2.13.2.min.js"></script>
+    -->
+
+    <!-- Load jq-console from jsDelivr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jq-console/2.7.7/jqconsole.min.js" integrity="sha512-Mf/a22WU0jysigD9olHtS7DRCxbCuV0tdyiFODubd4FB1jpbiOrG+MpvctniXpWP1HfeB+FRHf+T6qzNWkSpRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"></script>
+    <link rel="stylesheet" href="./src/styles/mainui.css">
+
+    <script>
+    $(function() {
+      $("#main-tabs").tabs({active : 1});
+    });
+    function _switchtab(n) { $("#main-tabs").tabs({active : n});}
+    </script>
+  </head>
+<script>var exports = {};</script>
+<!--
+<script type="module" src="./vpglSaveLoad.js"></script>
+-->
+<script type='module' src='./src/vpgl3d.js'></script>
+<script type='module' src="./src/vpgl.js"></script>
+<script type='module' src="./src/vpglGeoEditor.js"></script>
+
+<!--
+<script type='text/javascript' src="./vpgl.js"></script>
+-->
+<body style="background-color: lavender;">
+    <div>
+      VPGL Spec. "HIRAMA"- Build JN05-223 - visit https://vpgl.net<br>
+    </div>
+    <div id="main-tabs" style="background-color: inherit;">
+        <ul>
+          <li id="tab0" ><a href="#tabs-loadsave">LOAD/SAVE</a></li>
+          <li id="tab1" ><a href="#tabs-main">MAIN</a></li>
+          <li id="tab2" ><a href="#tabs-uipane">UI-PANE</a></li>
+          <li id="tab3" ><a href="#tabs-geoeditor">GEO EDITOR</a></li>
+        </ul>
+        <div id="tabs-loadsave" style="background-color: inherit;">
+          <div>
+            <br><input type="text" id="saveTargetFile" style="width:172pt; height:36pt; font-size: 14pt;" value="vpgl.txt"/>
+            <a id="saveFile" target="_blank" style="width:172pt; height:36pt; font-size: 14pt;">Dowinload</a>
+            <input type="button" id="saveToFile" value="SAVE TO FILE" style=" height:36pt"/>
+            <br><input type="file" id="targetFile" accept=".txt" style="width:172pt; height:36pt"/>
+            <input type="button" id="loadFromFile" value="FromFile" style=" height:36pt">
+          </div>
+          <div>
+            <input type="button" id="overWrite" value="Overwrite" style=" height:36pt">
+            <input type="button" id="mergeIn" value="MergeIn" style=" height:36pt">
+          </div>
+          <div>
+            To Save : Select and copy all text in below textbox and paste it to your local text file. <br>
+            To Load (a) : Select file and press "From File" Button. Then press "Overwrite" or "MergeIn"<br>
+            To Load (b) : Paste your saved definition text to below textbox and press "Overwrite" or "MergeIn" button.<br>
+            <div style="text-indent: 3em" >Overwrite : Discard current definition. </div>
+            <div style="text-indent: 3em" >MergeIn : Mix with current and to be loaded.</div>	
+            <textarea  id="loadsave-console" style="width: 95%; background-color: whitesmoke; overflow:auto; font:medium;" rows="20" cols="54"></textarea>
+          </div>
+        </div>
+        <div id="tabs-main" style="background-color: inherit;">
+          <div id = "main-ui-execs" style="display:block">
+                 <input id="main-ui-RunButton" type="button" value="RUN" style="width:72pt; height:36pt">
+                 <input id="main-ui-DebugButton" type="button" value="DEBUG" style="width:72pt; height:36pt">
+         </div>
+         <br>
+         <div id="main-ui-debug-buttons" style="display:none;">
+                     <input type="button" value="STEP IN" id="main-ui-step-in" style=" height:36pt">
+                     <input type="button" value="STEP OVER" id="main-ui-step-over" style=" height:36pt">
+                     <input type="button" value="STEP OUT" id="main-ui-step-out" style=" height:36pt">
+                     <input type="button" value="CONTINUE" id="main-ui-continue" style=" height:36pt">
+                     <input type="button" value="STOP DEBUG" id="main-ui-stop-debug" style="height:36pt">
+                     <input type="button" value="CLEAR B.P." id="main-ui-clear-bp" style="height:36pt">
+                     <input type="button" value="TimerTick" id="main-ui-timer-tick" style="height:36pt">                     
+                     <input id="main-ui-debug-timer-button" type="button" value="TIMER R.O." onclick="_DebugTimerRunOutCommand();" style="height:36pt; display: none;">
+                     <br>
+         </div>
+         <div id="main-ui-edit-buttons" style="display: block">
+                     <input type="button" id="main-ui-new-class" value="NEW CLASS" style=" height:36pt">
+                     <input type="button" id="main-ui-new-method" value="NEW METHOD" style=" height:36pt">
+                     <select id="main-ui-tile-manipulation-opname" style="height: 36pt; width: 160pt; font: inherit;">
+                         <option value="SelectOp">--Select Ops--</option>
+                         <option value="Clear This Method">Clear This Method</option>
+                         <option value="Delete This Method">Delete This Method</option>
+                         <option value="Rename This Method">Rename This Method</option>
+                         <option value="Copy This Method">Copy This Method</option>
+                         <option value="Expand"> Expand</option>
+                         <option value="Shrink"> Shrink</option>
+                         <option value="Shift Down"> Shift Down</option>
+                         <option value="Shift Up"> Shift Up</option>
+                         <option value="Shift Left"> Shift Left</option>
+                         <option value="Shift Right"> Shift Right</option>
+                         <!--
+                         <option value="Rename"> Reame</option>
+                         <option value="DELETE THIS CLASS">DELETE THIS CLASS</option>
+                         -->
+                     </select>
+          </div>
+          <br>
+          <label for="main-ui-selectclass">Class:</label>
+          <select id="main-ui-selectclass" style="width:150px"></select>
+          <label for="main-ui-selectmethod">Method:</label>
+          <select id="main-ui-selectmethod" style="width:150px"></select>
+          <br><br>
+          <details><summary>REMARK of this method</summary>
+            <textarea id="main-ui-method-remark"  style="width: 600px; height: 100pt;"></textarea>
+          </details>
+          <br>
+          <div id="main-ui-forgrid" sytle="display: block">
+                    IN:     <input type="text" id="main-ui-grid-incond" onchange="_OnChangeIncond()" style="background-color: white; width: 50pt"></input>
+                    OUT:    <input type="text" id="main-ui-grid-outdir" onchange="_OnChangeOutDir()" style="background-color: white; width: 50pt"></input>
+                    ALL:    <input type="checkbox" id="main-ui-grid-ifall" onchange="_OnChangeIfAll()" style="width:16pt;align-items: baseline;"></input>
+            <br>
+            <div id="main-ui-grid-area" style="display:block; user-select: none; width: 100%; border-color: black; border-width: 4pt;">
+              Grid Area
+            </div>
+          </div>
+          <div id="main-ui-fortext" style="display: none;">
+            <textarea id="main-ui-text-area"></textarea>
+          </div>
+          <div id="main-ui-forlist" style="display: none;">
+          </div>
+        </div>
+        <div id="tabs-uipane" style="background-color: inherit;">
+          <div style='display: flex; flex-direction:row; justify-content:left; flex-wrap: wrap; width: 600px; position: relative; text-align: center; height:36pt'>
+            <button id="uipane-run">RUN</button>
+            <button id="uipane-break">Break</button>
+           <!-- <progress id="progressBar" max=100 value=0 ></progress>
+          -->
+          </div><hr>
+          <div id='main-ui-console' ondblclick="_OnchangeConsoleSize()" style='display:block; position: relative; height: 38pt; width:100%; border-color: black; border-width: 2px;'></div>
+              <script>
+                  (function(){_jqconsole=$('#main-ui-console').jqconsole("Welcome To VPGL\n", ">>>");})();
+              </script>
+          <br>
+          <canvas id='main-ui-3dcanvas' style="display: flex"></canvas>
+          <hr><hr>
+          <div id='main-ui-3ditems' style='display: flex; flex-direction:row; justify-content: space-around; flex-wrap: wrap; width: inherit; position: relative; text-align: left; height:72pt'>
+          </div>
+          </div>
+        </div>
+        <div id='tabs-geoeditor' style='display: none; background-color: inherit; font-size: 12pt;'>
+          <!-- div style='display: flex; flex-direction:row; justify-content:left; flex-wrap: wrap; width: 600px; position: relative; text-align: center; height:36pt'>
+          -->
+          <div style='display: flex; flex-direction:row; justify-content:space-around; flex-wrap: wrap; width: 600px; position: relative; text-align: center; height:36pt'>
+            <p>ViewPoint:</p> <select id='main-ui-geoe-cams' onchange="_GeoeCamChange(this.value)"></select>
+            <p>&nbsp;Edit&nbsp;Ops:</p> <select id='main-ui-geoe-ops' onchange="_GeoEdOpsChange(this.value)">
+              <option value="hpos">-- select op --</option>
+              <option value="AddScn">Add New Scene</option>
+              <option value="AddItem">Add New Item</option>
+              <option value="CopyItem">Copy This Item</option>
+              <option value="Rename">Rename This Item</option>
+              <option value="DelItem">Delete This Item</option>
+              <option value="CopyScn">Copy This Scene</option>
+              <option value="DelScn">Delete This Scene</option>
+            </select>
+          </div><br>
+          <canvas id='main-ui-geoecanvas' style="width: 600px; height: 450px"></canvas><br>
+          <div id='main-ui-geuiitems' style='display:flex; flex-direction:row; justify-content: space-around; flex-wrap: wrap; position: relative; height:72pt'></div> 
+          <hr><hr>
+          SCENE:<select id='geoe-scenemenu' onchange="_GeoeSceneChange(this.value)">
+            <option>--add new scene--</option>
+            <option>Fin</option>
+          </select>
+          ITEM: <select id='geoe-itemmenu' onchange="_GeoeItemChange(this.value)">
+            <option>--add new item--</option>
+            <option>HWText</option>
+          </select>
+          TYPE: <select id='geoe-typemenu' onchange="_GeoeTypeChange(this.value)">
+            <option>Box</option>
+            <option>Ball</option>
+            <option>Text</option>
+            <option>Pipe</option>
+            <option>Ring</option>
+            <option>Import</option>
+            <option>button</option>
+            <option>range</option>
+            <option>check</option>
+            <option>choice</option>
+            <option>Light</option>
+            <option>Camera</option>
+          </select>
+          <div id='main-ui-geitems' style='display: block; flex-direction:row; justify-content: space-around; flex-wrap: wrap; width: 600px; position: relative; text-align: left; height:72pt'>
+            <hr>
+            <div id='geoe-pos' style="display: none;" onchange="_GeoePosChange()">X:<input type="number" id="geoe-posX" style="width: 100pt;">Y:<input type="number" id="geoe-posY" style="width: 100pt;">Z:<input type="number" id="geoe-posZ" style="width: 100pt;"></div>
+            <div id='geoe-scl' style="display: none;" onchange="_GeoeSclChange()">ScaleX:<input type="number" id="geoe-sclX" style="width: 100pt">ScaleY:<input type="number" id="geoe-sclY" style="width: 100pt">ScaleZ:<input type="number" id="geoe-sclZ" style="width: 100pt"></div>
+            <div id='geoe-dim' style="display: none;" onchange="_GeoeDimChange()">Width:<input type="number" id="geoe-Width" style="width: 80pt;">Height:<input type="number" id="geoe-Height" style="width: 80pt;">Depth:<input type="number" id="geoe-Depth" style="width: 80pt;"></div>
+            <div id='geoe-rot' style="display: none;" onchange="_GeoeRotChange()">RotX:<input type="number" id="geoe-RotX" style="width: 80pt;">RotY:<input type="number" id="geoe-RotY" style="width: 80pt;">RotZ:<input type="number" id="geoe-RotZ" style="width: 80pt;"></div>
+            <div id='geoe-col' style="display: none;" onchange="_GeoeColorChange()">Color:<input type="color" id="geoe-Color"></div>
+            <div id='geoe-rad' style="display: none;" onchange="_GeoeRadChange()">Radius<input type="number" id="geoe-Radius"></div>
+            <div id='geoe-rd2' style="display: none;" onchange="_GeoeRd2Change()">Radius2<input type="number" id="geoe-Radius2"></div>
+            <div id='geoe-len' style="display: none;" onchange="_GeoeLenChange()">Length<input type="number" id="geoe-Length"></div>
+            <div id='geoe-arc' style="display: none;" onchange="_GeoeArcChange()">Center Angle<input type="number" id="geoe-Arc"></div>
+            <div id='geoe-siz' style="display: none;" onchange="_GeoeSizChange()">Size:<input type="number" id="geoe-Size"></div>
+            <div id='geoe-txt' style="display: none;" onchange="_GeoeTxtChange()">Text:<input type="text" id="geoe-Text"></div>
+            <div id='geoe-com' style="display: none;" onchange="_GeoeImpChange()">Import:<select id="geoe-Import"></select></div>
+            <div id='geoe-cls' style="display: none;" onchange="_GeoeCollisionChange()">Check Collision:<input type="checkbox" id="geoe-Collision"></div>
+            <div id='geoe-tgt' style="display: none;" onchange="_GeoeTgtChange()">TargetX:<input type="number" id="geoe-TargetX" style="width: 80pt;">TargetY:<input type="number" id="geoe-TargetY" style="width: 80pt;">TargetZ:<input type="number" id="geoe-TargetZ" style="width: 80pt;"><div id="geoe-secusetgt">Use Target:<input type="checkbox" id="geoe-UseTgt"></div></div>
+            <div id='geoe-lgt' style="display: none;">Fov:<input type="text" id="geoe-Fov" style="width: 80pt;">Near:<input type="text" id="geoe-Near" style="width: 80pt;">Far:<input type="text" id="geoe-Far" style="width: 80pt;"></div>
+            <div id='geoe-uip' style="display: none;" onchange="_GeoeUipChange()">Order:<input type="number" id="geoe-Order">Size%:<input type="text" id="geoe-UiWidth"></div>
+            <div id='geoe-off' style="display: none;" onchange="_GeoeOffChange()">Off:<input type="checkbox" id="geoe-Off"></div>
+            <div id='geoe-tch' style="display: none;" onchange="_GeoeTchChange()">Touchable:<input type="checkbox" id="geoe-Touchable"></div>
+            <div id='geoe-lst' style="display: none;" onchange="_GeoeLstChange()">Item-List:<input type="text" id="geoe-items"></div>
+            <div id='geoe-ckv' style="display: none;" onchange="_GeoeCkVChange()">Value: <input type="checkbox" id="geoe-ChkVal"></div>
+            <div id='geoe-rgv' style="display: none;" onchange="_GeoeRgVChange()">Value: <input type="number" id="geoe-RngVal"></div>
+            <div id='geoe-chv' style="display: none;" onchange="_GeoeChVChange()">Value: <input type="text" id="geoe-ChsVal"></div>
+            <hr>
+            <div id='geoe-cst' style="display: none;" onchange="_GeoeCstChange()">Custom:<textarea style="width:500pt; height:300pt;" id="geoe-Custom"></textarea></div>
+          </div>
+        </div>
+        <!-- Edit Tile Dialog -->
+        <div id="main-ui-tile-edit" title="Edit Tile Name/Option : " style="display: none;" >
+          OP NAME:<input type="text" id="main-ui-tile-edit-operator" list="main-ui-tile-edit-oplist">
+          <datalist id="main-ui-tile-edit-oplist"></datalist>
+          <br>
+          OPTION: <input type="text" id="main-ui-tile-edit-option" size="30" list="main-ui-tile-edit-tile-option-list">
+          <datalist id="main-ui-tile-edit-tile-option-list">
+              <option value="NIL"></option>
+              <option value="T"></option>
+              <option value="0"></option>
+              <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+              <option value="10"></option>
+              <option value="100"></option>
+              <option value="{'Scene': '' 'Geo': ''}"></option>
+          </datalist>
+      </div>
+      <!-- NEW Class Dialog -->
+      <div id="main-ui-class-edit-new" title="MAKE NEW TILE"  style="display: none">
+        NEW CLASS NAME : <input type="text" id="main-ui-class-edit-new-name" size="30"><br>
+        SUPERCLASSES : <input type="text" id="main-ui-class-edit-supers" size="30" value='["Dictionary"]'><br>
+      </div>
+      <!-- New Method Dialog -->
+      <div id="main-ui-method-edit-new" title="MAKE NEW METHOD"  style="display: none">
+        NEW METHOD NAME : <input type="text" id="main-ui-method-edit-new-name" size="30"><br>
+        TILE SIZE : <select id="main-ui-method-edit-new-boardsize">
+            <option value=3>3</option>
+            <option value=5>5</option>
+            <option value=7>7</option>
+        </select>
+        FIRE IF ALL : <input type="checkbox" checked="true" id="main-ui-method-edit-new-fireif"><br>
+        INPUT DIR : <input type="text" id="main-ui-method-edit-new-incond" size="30"><br>
+        OUTPUT DIR : <input type="text" id="main-ui-method-edit-new-outdir" size="30">
+      </div>
+      <!-- Alert Dialog -->
+      <div id='main-ui-alert-dialog' style='display:none' >
+        <input type='text' readonly id='main-ui-alert-dialog-message'></div>
+      </div>
+      <!-- Input Dialog -->
+      <div id='main-ui-input-dialog' style='display:none'>
+          <div id='main-ui-input-dialog-prompt'></div><br>
+          <input type="text" id='main-ui-input-dialog-value'>
+      </div>
+      <!-- Choise Dialog -->
+      <div id='main-ui-choice-dialog' style='display:none'>
+          <div id='main-ui-choice-dialog-pormpt'></div>
+          <select id='main-ui-choice-dialog-combo'>
+          </select>
+      </div>
+    </div>
+</body>
+</html>

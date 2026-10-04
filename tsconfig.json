@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"target": "ES6",
+		"module": "ES2015",
+		"sourceMap": true,
+		"ignoreDeprecations": "6.0",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"strict": false,
+		"moduleDetection": "legacy",
+		"types": ["jquery"]
+	}
+}

@@ -1,0 +1,1199 @@
+{ "version" : [ "JN05", 3], 
+  "outload" : {
+  "classid": "Dictionary",
+  "val": {
+    "Number": {
+      "classid": "Dictionary",
+      "val": {
+        "SUPERCLASSES": {
+          "classid": "Array",
+          "val": [
+            {
+              "classid": "String",
+              "val": "T"
+            }
+          ]
+        },
+        "GCD": {
+          "classid": "Grid",
+          "val": {
+            "size": {
+              "classid": "Number",
+              "val": 7
+            },
+            "opname": {
+              "classid": "String",
+              "val": "GCD"
+            },
+            "indir": {
+              "classid": "String",
+              "val": "TL"
+            },
+            "outdir": {
+              "classid": "String",
+              "val": "B"
+            },
+            "ifall": {
+              "classid": "T"
+            },
+            "D1": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "L"
+                }
+              }
+            },
+            "C1": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "R"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "A4": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "T"
+                }
+              }
+            },
+            "A3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "B"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "T"
+                }
+              }
+            },
+            "A2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "B"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "C2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "YandR"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "TL"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "BR"
+                }
+              }
+            },
+            "C3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "D2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "B2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "D4": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "GT"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "RT"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "D7": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "C7": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "TL"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "B7": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "C6": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "GCD"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "TR"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "B6": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "B5": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "R"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "C5": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "SWITCH"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "TR"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "BL"
+                }
+              }
+            },
+            "D6": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "R"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "L"
+                }
+              }
+            },
+            "E6": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "SWITCH"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "RT"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "LB"
+                }
+              }
+            },
+            "E7": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "END"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": ""
+                }
+              }
+            },
+            "D5": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "LR"
+                }
+              }
+            },
+            "E5": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "D3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "CONST"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": "0"
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "C4": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "E2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "E3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "LB"
+                }
+              }
+            },
+            "E4": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "LR"
+                }
+              }
+            },
+            "F4": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "F5": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "F6": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "L"
+                }
+              }
+            }
+          }
+        },
+        "YandR": {
+          "classid": "Grid",
+          "val": {
+            "size": {
+              "classid": "Number",
+              "val": 3
+            },
+            "opname": {
+              "classid": "String",
+              "val": "YandR"
+            },
+            "indir": {
+              "classid": "String",
+              "val": "TL"
+            },
+            "outdir": {
+              "classid": "String",
+              "val": "BR"
+            },
+            "ifall": {
+              "classid": "T"
+            },
+            "B1": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "A2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "RB"
+                }
+              }
+            },
+            "B2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "A%B"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "TL"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "C2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "A3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "R"
+                }
+              }
+            },
+            "B3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "App": {
+      "classid": "App",
+      "val": {
+        "Mainline": {
+          "classid": "Grid",
+          "val": {
+            "opname": {
+              "classid": "String",
+              "val": "Mainline"
+            },
+            "size": {
+              "classid": "Number",
+              "val": 7
+            },
+            "indir": {
+              "classid": "String",
+              "val": "T"
+            },
+            "outdir": {
+              "classid": "String",
+              "val": ""
+            },
+            "ifall": {
+              "classid": "T"
+            },
+            "D1": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "INPUT"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": "\"Input a positive integer\""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "D3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "GCD"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "TR"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "D2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "RB"
+                }
+              }
+            },
+            "E2": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "INPUT"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": "\"Input another positive integer\""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "L"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "E3": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "FLOW"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "L"
+                }
+              }
+            },
+            "D4": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "ALRT"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": "B"
+                }
+              }
+            },
+            "D5": {
+              "classid": "Tile",
+              "val": {
+                "opname": {
+                  "classid": "String",
+                  "val": "STOP"
+                },
+                "option": {
+                  "classid": "String",
+                  "val": ""
+                },
+                "indir": {
+                  "classid": "String",
+                  "val": "T"
+                },
+                "outdir": {
+                  "classid": "String",
+                  "val": ""
+                }
+              }
+            }
+          }
+        },
+        "SUPERCLASSES": {
+          "classid": "Array",
+          "val": [
+            {
+              "classid": "String",
+              "val": "Dictionary"
+            }
+          ]
+        }
+      }
+    }
+  }
+}, 
+  "models" : {
+  "sceneToBeRendered": "Fin",
+  "Scenes": {
+    "Ready": {
+      "UsingCameraName": "Default",
+      "Cameras": {
+        "Default": {
+          "shape": "Camera",
+          "type": "Perspective",
+          "fov": 75,
+          "aspect": 1.25,
+          "near": 0.1,
+          "far": 2000,
+          "posx": 0,
+          "posy": 0,
+          "posz": 1000,
+          "rotx": 0,
+          "roty": 0,
+          "rotz": 0,
+          "targetx": 0,
+          "targety": 0,
+          "targetz": 0,
+          "working": null
+        }
+      },
+      "Lights": {
+        "Main": {
+          "shape": "Light",
+          "type": "Directional",
+          "color": 16777215,
+          "posx": 0,
+          "posy": 0,
+          "posz": 1000,
+          "targetx": 0,
+          "targety": 0,
+          "targetz": 0,
+          "working": null
+        }
+      },
+      "Geometries": {
+        "BlueBox": {
+          "shape": "Box",
+          "width": 300,
+          "height": 300,
+          "depth": 300,
+          "color": 255,
+          "posx": 0,
+          "posy": 0,
+          "posz": 0,
+          "rotx": 0.785,
+          "roty": 0.785,
+          "rotz": 0,
+          "working": null
+        },
+        "TextReady": {
+          "shape": "Text",
+          "size": 50,
+          "h": 50,
+          "text": "Ready To Go",
+          "posx": -150,
+          "posy": 0,
+          "posz": 500,
+          "color": 65280,
+          "working": null
+        }
+      },
+      "working": null
+    },
+    "Running": {
+      "UsingCameraName": "Default",
+      "Cameras": {
+        "Default": {
+          "shape": "Camera",
+          "type": "Perspective",
+          "fov": 75,
+          "aspect": 1.25,
+          "near": 0.1,
+          "far": 2000,
+          "posx": 0,
+          "posy": 0,
+          "posz": 1000,
+          "rotx": 0,
+          "roty": 0,
+          "rotz": 0,
+          "working": null
+        }
+      },
+      "Lights": {
+        "Main": {
+          "shape": "Light",
+          "type": "Directional",
+          "color": 16777215,
+          "posx": 0,
+          "posy": 0,
+          "posz": 1000,
+          "targetx": 0,
+          "targety": 0,
+          "targetz": 0,
+          "working": null
+        }
+      },
+      "Geometries": {
+        "BlueBox": {
+          "shape": "Box",
+          "width": 300,
+          "height": 300,
+          "depth": 300,
+          "color": 255,
+          "posx": 0,
+          "posy": 0,
+          "posz": 0,
+          "rotx": 0.785,
+          "roty": 0.785,
+          "rotz": 0,
+          "working": null
+        },
+        "TextRun": {
+          "shape": "Text",
+          "size": 50,
+          "h": 50,
+          "text": "RUNNING...",
+          "posx": -150,
+          "posy": 0,
+          "posz": 500,
+          "color": 65280,
+          "working": null
+        }
+      },
+      "working": null
+    },
+    "Fin": {
+      "UsingCameraName": "Default",
+      "Cameras": {
+        "Default": {
+          "shape": "Camera",
+          "type": "Perspective",
+          "fov": 75,
+          "aspect": 1.25,
+          "near": 0.1,
+          "far": 1000,
+          "posx": 30,
+          "posy": 0,
+          "posz": 100,
+          "rotx": 0,
+          "roty": 0,
+          "rotz": 0,
+          "working": null
+        }
+      },
+      "Lights": {
+        "shape": "Light",
+        "Main": {
+          "type": "Directional",
+          "color": 16777215,
+          "posx": 1,
+          "posy": 1,
+          "posz": 1,
+          "targetx": 0,
+          "targety": 0,
+          "targetz": 0,
+          "working": null
+        }
+      },
+      "Geometries": {
+        "TextRun": {
+          "shape": "Text",
+          "size": 20,
+          "h": 5,
+          "text": "END",
+          "posx": 0,
+          "posy": 0,
+          "posz": 0,
+          "color": 65280,
+          "working": null
+        },
+        "Ball": {
+          "shape": "Ball",
+          "r": 100,
+          "posx": 0,
+          "posy": 0,
+          "posz": -200,
+          "color": 16777215,
+          "working": null
+        }
+      },
+      "working": null
+    }
+  }
+}
+}

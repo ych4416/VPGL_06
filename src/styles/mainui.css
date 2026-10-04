@@ -1,0 +1,100 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016/09/05, 20:41:59
+    Author     : chida
+*/
+
+div.tabbox { margin: 0px; padding: 0px; width: 100% }
+ 
+p.tabs { margin: 0px; padding: 0px; }
+p.tabs a {
+   display: block; width: 10em; float: left;
+   margin: 0px 1px 0px 0px; padding: 3px;
+   text-align: center;
+   border-radius: 12px 12px 0px 0px; /* 角を丸くする */
+}
+
+p.tabs a.console-ui { background-color: gray;  color: white; }
+p.tabs a.loadsave-ui { background-color: gray; color:white;}
+p.tabs a.main-ui { background-color: inherit; color:white;}
+p.tabs a:hover { color: yellow; }
+
+div.tab {
+    overflow: auto; clear: left;
+}
+
+div#console-ui { border: 5px gray; background-color: white; }
+div#loadsave-ui { border: 5px gray; background-color: white; }
+div#main-ui { border: 5px gray; background-color: white }
+div.tab p { margin: 0.5em; }
+
+th{background-color: rgba(255,255,255,0.6); border: 0px; }
+
+.WMForeGround {
+    /*display       : inline-block;         /* インラインブロック化 */
+    /*position      : absolute;             /* 親要素からの相対位置 */
+    background-color : rgba(200, 240, 240, 0.6);
+  }
+   /* --- 背景透かし文字の定義 ----------------------------------*/
+.WMark {
+    position      : absolute;             /* 親要素からの相対位置 */
+    display       : inline-block;         /* インラインブロック化 */
+    white-space   : nowrap;               /* 折り返ししない       */
+    font-size     : 1000%;                 /* 背景透かし文字サイズ */
+    font-weight   : bold;                 /* 太字                 */
+    color         : rgba(255, 102, 255, 0.8); /* 背景透かし文字色     */
+                                          /* 中心寄せ＆角度       */
+    top           : 50%;
+    left          : 10%;
+    transform     : rotate(315deg);
+  }
+
+/* --- for jqconsole    ----------------------------------*/
+    /* The console container element */
+    #main-ui-console {
+      position: absolute;
+      width: 400px;
+      height: 100px;
+      background-color:black;
+    }
+    /* The inner console element. */
+    .jqconsole {
+        padding: 10px;
+    }
+    /* The cursor. */
+    .jqconsole-cursor {
+        background-color: gray;
+    }
+    /* The cursor color when the console looses focus. */
+    .jqconsole-blurred .jqconsole-cursor {
+        background-color: #666;
+    }
+    /* The current prompt text color */
+    .jqconsole-prompt {
+        color: #0d0;
+    }
+    /* The command history */
+    .jqconsole-old-prompt {
+        color: #0b0;
+        font-weight: normal;
+    }
+    /* The text color when in input mode. */
+    .jqconsole-input {
+        color: #dd0;
+    }
+    /* Previously entered input. */
+    .jqconsole-old-input {
+        color: #bb0;
+        font-weight: normal;
+    }
+    /* The text color of the output. */
+    .jqconsole-output {
+        color: lightgreen;
+    }
+    .jqconsole-header {
+        color: #0ff;
+    }

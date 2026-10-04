@@ -1,0 +1,78 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch mod chrome",
+            "runtimeArgs": [
+                "--allow-file-access-from-files",
+                "--remote-debugging-port=9222"
+            ],
+            "url": "http://localhost:8081/vpgl.html",
+            "webRoot": "${workspaceFolder}",
+            "smartStep": true
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "runtimeArgs": [
+                "--allow-file-access-from-files"
+            ],
+            "smartStep": true,
+            "url": "file://${workspaceRoot}/index.html"
+        },
+        {
+            "type": "chrome",
+            "runtimeArgs": [
+                "--allow-file-access-from-files"
+            ],
+            "request": "launch",
+            "name": "Launch Chrome against locallib",
+            "webRoot": "${workspaceFolder}",
+            "url": "file://${workspaceRoot}/src/vpgl_local.html"
+        },
+        {
+            "type": "chrome",
+            "runtimeArgs": [
+                "--allow-file-access-from-files"
+            ],
+            "request": "launch",
+            "name": "Launch Chrome - bin",
+            "webRoot": "${workspaceFolder}",
+            "url": "file://${workspaceRoot}/bin/vpgl.html"
+        },
+        {
+            "type": "chrome",
+            "runtimeArgs": [
+                "--allow-file-access-from-files"
+            ],
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "webRoot": "${workspaceFolder}",
+            "url": "file://${workspaceRoot}/src/vpgl.html"
+        },
+        {
+            "type": "chrome",
+            "runtimeArgs": [
+                "--allow-file-access-from-files"
+            ],
+            "request": "launch",
+            "name": "Launch Framed",
+            "webRoot": "${workspaceFolder}",
+            "url": "file://${workspaceRoot}/index.html"
+        },
+        {
+            "type": "msedge",
+            "name": "edge-local",
+            "webRoot": "${workspaceFolder}",
+            "request": "launch",
+            "runtimeArgs": ["--allow-file-access-from-files"],
+            "url": "file://${workspaceRoot}/index.html"
+        }
+    ]
+}
