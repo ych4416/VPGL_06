@@ -1,3 +1,8 @@
+"use strict";
+//import { post } from "jquery";
+// import { arrayBuffer } from "stream/consumers";
+// ts-ignore -- TypeScript cannot resolve type declarations for the CDN module. 
+// import { ZeroCurvatureEnding } from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js";
 // import { isRegularExpressionLiteral } from "typescript";
 var DirectionW;
 (function (DirectionW) {
@@ -4295,7 +4300,6 @@ self.addEventListener("message", function (e) {
     //       postMessage({cmd: 'ERROR', msg: error}, null);
     //   };
 }, false);
-export {};
 //
 //
 //

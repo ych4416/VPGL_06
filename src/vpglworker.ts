@@ -1,6 +1,7 @@
 //import { post } from "jquery";
 // import { arrayBuffer } from "stream/consumers";
-import { ZeroCurvatureEnding } from "three";
+// ts-ignore -- TypeScript cannot resolve type declarations for the CDN module. 
+// import { ZeroCurvatureEnding } from "https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js";
 // import { isRegularExpressionLiteral } from "typescript";
 
 
