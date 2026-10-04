@@ -1,7 +1,7 @@
 
-// /// <reference path="../node_modules/three/src/Three.d.ts" />
-// /// <reference path="../node_modules/@types/three/index.d.ts" />
-import * as THREE from '../node_modules/three/build/three.module.js';
+// @ts-ignore -- TypeScript cannot resolve type declarations for the CDN module.
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.module.js';
+;
 import { FontLoader } from '../libs/FontLoader.js';
 import { TextGeometry } from '../libs/TextGeometry.js';
 import { gVpglWorker } from './vpgl.js';
@@ -564,7 +564,7 @@ if (currentScn === undefined || currentScn === null)
   var rx = ( x / w ) * 2 - 1;
   var ry = -( y / h ) * 2 + 1;
 
-  raycaster.setFromCamera({x:rx, y:ry}, currentCam);
+  raycaster.setFromCamera(new THREE.Vector2(rx, ry), currentCam);
   if (currentScn.working === null) return;
   const intersects = raycaster.intersectObjects(currentScn.working.children,true);
   if (intersects.length < 1)
