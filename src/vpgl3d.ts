@@ -1,6 +1,6 @@
 
 // @ts-ignore -- TypeScript cannot resolve type declarations for the CDN module.
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.module.js';
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js';
 ;
 import { FontLoader } from '../libs/FontLoader.js';
 import { TextGeometry } from '../libs/TextGeometry.js';
