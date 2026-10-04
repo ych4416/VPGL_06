@@ -1,7 +1,8 @@
 
 import { Get3DWorld, Set3DWorld, _Update3D, _InitW3D } from "./vpgl3d.js";
 import { _allVM } from "./vpgl.js";
-import * as THREE from '../node_modules/three/build/three.module.js'
+// @ts-ignore -- TypeScript cannot resolve type declarations for the CDN module.
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js';
 
 var _geoe_renderer: THREE.WebGLRenderer = null;
 
