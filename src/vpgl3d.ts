@@ -1,9 +1,10 @@
 
 // @ts-ignore -- TypeScript cannot resolve type declarations for the CDN module.
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js';
-;
-import { FontLoader } from '../libs/FontLoader.js';
-import { TextGeometry } from '../libs/TextGeometry.js';
+import * as THREE from 'three';
+// @ts-ignore -- TypeScript cannot resolve type declarations for the CDN module.
+import { FontLoader } from 'https://unpkg.com/three@0.165.0/examples/jsm/loaders/FontLoader.js';
+// @ts-ignore -- TypeScript cannot resolve type declarations for the CDN module.
+import { TextGeometry } from 'https://unpkg.com/three@0.165.0/examples/jsm/geometries/TextGeometry.js';
 import { gVpglWorker } from './vpgl.js';
 
 const width = 600;
@@ -197,12 +198,12 @@ function SetupScene(sname: string, axislen: number, uipalette: string) : {scene:
           mesh = new THREE.Mesh(geo, material);
           mesh.position.set(geoparms.posx, geoparms.posy, geoparms.posz);
           mesh.name = geokey;
-          sparam.working.add(mesh);
-          geoparms.working = mesh;
+            sparam.working.add(mesh);
+            geoparms.working = mesh;
           break;
         case 'Text':
           material = new THREE.MeshStandardMaterial({color: geoparms.color});
-          geo = new TextGeometry(geoparms.text,{font: _helvetica, size: geoparms.size, height: geoparms.h, curveSegments: 12});
+          geo = new TextGeometry(geoparms.text,{font: _helvetica, size: geoparms.size, depth: geoparms.h, curveSegments: 12});
           if(geoparms.rotx === undefined) geoparms.rotx = 0;
           if(geoparms.roty === undefined) geoparms.roty = 0;
           if(geoparms.rotz === undefined) geoparms.rotz = 0;
@@ -284,7 +285,7 @@ function _3DMakeGroup(grp: THREE.Group, scn: string): void {
         grp.add(mesh);
         break;
       case 'Text':
-        geo = new TextGeometry(geoparms.text,{font: _helvetica, size: geoparms.size, height: geoparms.h, curveSegments: 12});
+        geo = new TextGeometry(geoparms.text,{font: _helvetica, size: geoparms.size, depth: geoparms.h, curveSegments: 12});
         if(geoparms.rotx === undefined) geoparms.rotx = 0;
         if(geoparms.roty === undefined) geoparms.roty = 0;
         if(geoparms.rotz === undefined) geoparms.rotz = 0;
@@ -371,7 +372,7 @@ function MakeSceneAndCamera(sname: string, axislen: number = -1, uipalette: stri
         mesh.position.set(geoparms.posx, geoparms.posy, geoparms.posz);
         break;
       case 'Text':
-        geo = new TextGeometry(geoparms.text,{font: _helvetica, size: geoparms.size, height: geoparms.h, curveSegments: 12});
+        geo = new TextGeometry(geoparms.text,{font: _helvetica, size: geoparms.size, depth: geoparms.h, curveSegments: 12});
         material= new THREE.MeshStandardMaterial({color: geoparms.color});
         if(geoparms.rotx === undefined) geoparms.rotx = 0;
         if(geoparms.roty === undefined) geoparms.roty = 0;
