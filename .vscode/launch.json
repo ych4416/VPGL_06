@@ -24,7 +24,7 @@
                 "--allow-file-access-from-files"
             ],
             "smartStep": true,
-            "url": "file://${workspaceRoot}/index.html"
+            "url": "file://${workspaceRoot}/vpglide.html"
         },
         {
             "type": "chrome",
@@ -64,7 +64,7 @@
             "request": "launch",
             "name": "Launch Framed",
             "webRoot": "${workspaceFolder}",
-            "url": "file://${workspaceRoot}/index.html"
+            "url": "file://${workspaceRoot}/vpglide.html"
         },
         {
             "type": "msedge",
@@ -72,7 +72,7 @@
             "webRoot": "${workspaceFolder}",
             "request": "launch",
             "runtimeArgs": ["--allow-file-access-from-files"],
-            "url": "file://${workspaceRoot}/index.html"
+            "url": "file://${workspaceRoot}/vpglide.html"
         }
     ]
 }
