@@ -554,10 +554,10 @@ class TToken extends VoidToken {
         if (inTokenInOrder[0] == null || inTokenInOrder[1] == null)
             return {status: "SWITCH on T", ret: ReturnCode.needMoreToken, outputInOrder: [null, null, null, null]};
 
-        if(inTokenInOrder[1].AsBool())
-            return {status: "SWITCH on T", ret: ReturnCode.ok, outputInOrder: [inTokenInOrder[0], null, null, null]};
-        else
+        if(inTokenInOrder[1] === NILToken.theNIL  || (inTokenInOrder[1].AsBool() !== null && inTokenInOrder[1].AsBool() === false))
             return {status: "SWITCH on NIL", ret: ReturnCode.ok, outputInOrder: [null, inTokenInOrder[0], null, null]};
+        else
+            return {status: "SWITCH on T", ret: ReturnCode.ok, outputInOrder: [inTokenInOrder[0], null, null, null]};
     };
 
     /*
@@ -709,6 +709,7 @@ class TToken extends VoidToken {
         initval.Put(SuperClassesKey, ArrayToken.NewInstance([StringToken.NewInstance("Void")]));
         this.subrcoll["NOT"]    = SUBRToken.NewInstance(TToken.TNOT);
         this.subrcoll["CONST"]  = SUBRToken.NewInstance(TToken.CONST);
+        this.subrcoll["DATA"]  = SUBRToken.NewInstance(TToken.CONST);
         this.subrcoll["OPTION"] = SUBRToken.NewInstance(TToken.OPTION);
         this.subrcoll["=="]     = SUBRToken.NewInstance(TToken.EQ);
         this.subrcoll["GDB"]    = SUBRToken.NewInstance(TToken.GDB);
@@ -716,10 +717,12 @@ class TToken extends VoidToken {
         this.subrcoll["ARRAY2"] = SUBRToken.NewInstance(TToken.ARRAY2);
         this.subrcoll["ARRAY3"] = SUBRToken.NewInstance(TToken.ARRAY3);
         this.subrcoll["ALRT"]   = SUBRToken.NewInstance(TToken.ALRT);
+        this.subrcoll["DISP"]   = SUBRToken.NewInstance(TToken.ALRT);
         this.subrcoll["INPUT"]  = SUBRToken.NewInstance(TToken.INPUT);
         this.subrcoll["END"]    = SUBRToken.NewInstance(TToken.END);
         this.subrcoll["STOP"]   = SUBRToken.NewInstance(TToken.STOP);
         this.subrcoll["SWITCH"] = SUBRToken.NewInstance(TToken.SWITCH);
+        this.subrcoll["IF"] = SUBRToken.NewInstance(TToken.SWITCH);
 //        this.subrcoll["APPLY"]  = SUBRToken.NewInstance(TToken.APPLY);
 //        this.subrcoll["LOOP"]   = SUBRToken.NewInstance(TToken.LOOP);
         this.subrcoll["JOIN"]   = SUBRToken.NewInstance(TToken.JOIN);
@@ -737,7 +740,7 @@ class NILToken extends TToken {
     protected static subrcoll: SUBRToken[] = [];
     protected static classidstr: string = "NIL";
 
-    private static theNIL: NILToken = new NILToken();
+    public static theNIL: NILToken = new NILToken();
 
     protected constructor() { super(); this.classid = NILToken.classidstr; this.val = null; };
 
