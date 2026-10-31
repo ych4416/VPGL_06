@@ -374,6 +374,9 @@ class VPGLGlobalDataBase {
         TToken.RegisterSelf();
         NILToken.RegisterSelf();
         NumberToken.RegisterSelf();
+        PositiveNumberToken.RegisterSelf();
+        NegativeNumberToken.RegisterSelf();
+        ZeroNumberToken.RegisterSelf();
         ArrayToken.RegisterSelf();
         StringToken.RegisterSelf();
         TimerToken.RegisterSelf();
@@ -1295,14 +1298,19 @@ StringToken.subrcoll = [];
 StringToken.classidstr = "String";
 ;
 class NumberToken extends TToken {
+    static IsZero(val) { return Math.abs(val) < NumberToken.epsilon; }
+    ;
     constructor() { super(); this.classid = NumberToken.classidstr; this.val = null; }
     ;
     static NewInstance(val) {
+        if (NumberToken.IsZero(val) || val === 0)
+            return ZeroNumberToken.NewInstance();
+        if (val < 0)
+            return NegativeNumberToken.NewInstance(val);
+        if (val > 0)
+            return PositiveNumberToken.NewInstance(val);
         var tk = new NumberToken();
-        if (val.classid === "Number")
-            tk.val = val.val;
-        else
-            tk.val = val;
+        tk.val = val;
         return tk;
     }
     ;
@@ -1563,7 +1571,60 @@ class NumberToken extends TToken {
 }
 NumberToken.subrcoll = [];
 NumberToken.classidstr = 'Number';
+NumberToken.epsilon = 1e-5;
 ;
+class PositiveNumberToken extends NumberToken {
+    constructor() { super(); this.classid = PositiveNumberToken.classidstr; this.val = null; }
+    ;
+    static NewInstance(val) {
+        var tk = new PositiveNumberToken();
+        tk.val = val;
+        return tk;
+    }
+    static RegisterSelf() {
+        Token.InstallClass("Positive", PositiveNumberToken.NewInstance, NumberToken.FromLiteral, NumberToken.JSONRcv, PositiveNumberToken.JSONRpl);
+        var initval = DictToken.NewInstance({});
+        initval.Put(SuperClassesKey, ArrayToken.NewInstance([StringToken.NewInstance("Number")]));
+        _SUBRDepo["Positive"] = PositiveNumberToken.subrcoll;
+        VPGLGlobalDataBase.Put("Positive", initval, false);
+    }
+}
+PositiveNumberToken.subrcoll = [];
+PositiveNumberToken.classidstr = 'Positive';
+class NegativeNumberToken extends NumberToken {
+    constructor() { super(); this.classid = NegativeNumberToken.classidstr; this.val = null; }
+    static NewInstance(val) {
+        var tk = new NegativeNumberToken();
+        tk.val = val;
+        return tk;
+    }
+    static RegisterSelf() {
+        Token.InstallClass("Negative", NegativeNumberToken.NewInstance, NumberToken.FromLiteral, NumberToken.JSONRcv, NegativeNumberToken.JSONRpl);
+        var initval = DictToken.NewInstance({});
+        initval.Put(SuperClassesKey, ArrayToken.NewInstance([StringToken.NewInstance("Number")]));
+        _SUBRDepo["Negative"] = NegativeNumberToken.subrcoll;
+        VPGLGlobalDataBase.Put("Negative", initval, false);
+    }
+}
+NegativeNumberToken.subrcoll = [];
+NegativeNumberToken.classidstr = 'Negative';
+class ZeroNumberToken extends NumberToken {
+    constructor() { super(); this.classid = ZeroNumberToken.classidstr; this.val = null; }
+    static NewInstance() {
+        var tk = new ZeroNumberToken();
+        tk.val = 0;
+        return tk;
+    }
+    static RegisterSelf() {
+        Token.InstallClass("Zero", ZeroNumberToken.NewInstance, NumberToken.FromLiteral, NumberToken.JSONRcv, ZeroNumberToken.JSONRpl);
+        var initval = DictToken.NewInstance({});
+        initval.Put(SuperClassesKey, ArrayToken.NewInstance([StringToken.NewInstance("Number")]));
+        _SUBRDepo["Zero"] = ZeroNumberToken.subrcoll;
+        VPGLGlobalDataBase.Put("Zero", initval, false);
+    }
+}
+ZeroNumberToken.subrcoll = [];
+ZeroNumberToken.classidstr = 'Zero';
 class TimerToken extends TToken {
     constructor() { super(); this.classid = TimerToken.classidstr; this.val = null; }
     ;

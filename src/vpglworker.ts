@@ -285,6 +285,9 @@ class VPGLGlobalDataBase {
         TToken.RegisterSelf();
         NILToken.RegisterSelf();
         NumberToken.RegisterSelf();
+        PositiveNumberToken.RegisterSelf();
+        NegativeNumberToken.RegisterSelf();
+        ZeroNumberToken.RegisterSelf();
         ArrayToken.RegisterSelf();
         StringToken.RegisterSelf();
         TimerToken.RegisterSelf();
@@ -1170,15 +1173,20 @@ class NumberToken extends TToken {
     protected static classidstr: string = 'Number';
 
     protected classid: string;
+    private static epsilon: number = 1e-5;
+    private static IsZero(val: number): boolean { return Math.abs(val) < NumberToken.epsilon; };
 
     protected constructor() { super(); this.classid=NumberToken.classidstr; this.val = null; };
 
     public static NewInstance(val: any): Token {
+        if (NumberToken.IsZero(val) || val === 0)
+            return ZeroNumberToken.NewInstance();
+        if (val < 0)
+            return NegativeNumberToken.NewInstance(val);
+        if (val > 0)
+            return PositiveNumberToken.NewInstance(val);
         var tk: NumberToken = new NumberToken();
-        if(val.classid==="Number")
-            tk.val = val.val;
-        else
-            tk.val = <number>val;
+        tk.val = val;
         return tk;
     };
 
@@ -1432,6 +1440,75 @@ class NumberToken extends TToken {
         VPGLGlobalDataBase.Put("Number",initval,false);
     };    
 };
+
+class PositiveNumberToken extends NumberToken {
+    protected static subrcoll: SUBRToken[] = [];
+    protected static classidstr: string = 'Positive';
+
+    protected classid: string;
+
+    protected constructor() { super(); this.classid=PositiveNumberToken.classidstr; this.val = null; };
+
+    public static NewInstance(val: any): Token {
+        var tk: PositiveNumberToken = new PositiveNumberToken();
+        tk.val = val;
+        return tk;
+    }
+
+    public static RegisterSelf() : void {
+        Token.InstallClass("Positive", PositiveNumberToken.NewInstance, NumberToken.FromLiteral,NumberToken.JSONRcv, PositiveNumberToken.JSONRpl);
+        var initval: Token = DictToken.NewInstance({});
+        initval.Put(SuperClassesKey, ArrayToken.NewInstance([StringToken.NewInstance("Number")]));
+        _SUBRDepo["Positive"]=PositiveNumberToken.subrcoll;
+        VPGLGlobalDataBase.Put("Positive",initval,false);
+    }
+} 
+
+class NegativeNumberToken extends NumberToken {
+    protected static subrcoll: SUBRToken[] = [];
+    protected static classidstr: string = 'Negative';
+
+    protected classid: string;
+
+    protected constructor() { super(); this.classid=NegativeNumberToken.classidstr; this.val = null ; }
+    
+    public static NewInstance(val: any): Token {
+        var tk: NegativeNumberToken = new NegativeNumberToken();
+        tk.val = val;
+        return tk;
+    }
+
+    public static RegisterSelf() : void {
+        Token.InstallClass("Negative", NegativeNumberToken.NewInstance, NumberToken.FromLiteral,NumberToken.JSONRcv, NegativeNumberToken.JSONRpl);
+        var initval: Token = DictToken.NewInstance({});
+        initval.Put(SuperClassesKey, ArrayToken.NewInstance([StringToken.NewInstance("Number")]));
+        _SUBRDepo["Negative"]=NegativeNumberToken.subrcoll;
+        VPGLGlobalDataBase.Put("Negative",initval,false);
+    }
+}
+
+class ZeroNumberToken extends NumberToken {
+    protected static subrcoll: SUBRToken[] = [];
+    protected static classidstr: string = 'Zero'; 
+
+    protected classid: string;
+
+    protected constructor() { super(); this.classid=ZeroNumberToken.classidstr; this.val = null; } 
+
+    public static NewInstance(): Token {
+        var tk: ZeroNumberToken = new ZeroNumberToken();
+        tk.val = 0;
+        return tk;
+    }
+
+    public static RegisterSelf() : void {
+        Token.InstallClass("Zero", ZeroNumberToken.NewInstance, NumberToken.FromLiteral,NumberToken.JSONRcv, ZeroNumberToken.JSONRpl);
+        var initval: Token = DictToken.NewInstance({});
+        initval.Put(SuperClassesKey, ArrayToken.NewInstance([StringToken.NewInstance("Number")]));
+        _SUBRDepo["Zero"]=ZeroNumberToken.subrcoll;
+        VPGLGlobalDataBase.Put("Zero",initval,false);
+    }
+}
 
 class TimerToken extends TToken {
     protected static subrcoll: SUBRToken[];
