@@ -744,7 +744,7 @@ function _3donclick(geoname: string){
     gVpglWorker.Cmd({cmd: 'Click', scn: _the3DWorld.sceneToBeRendered, target: geoname, spec: tgspec});
   };
 
-  function _3drngonchange(geoname: string, value) {
+  export function _3drngonchange(geoname: string, value) {
     var tgspec = _the3DWorld.Scenes[_the3DWorld.sceneToBeRendered].Geometries[geoname];
     tgspec.working = null;
     gVpglWorker.Cmd({cmd: 'ChangeVal', scn: _the3DWorld.sceneToBeRendered, target: geoname, spec: tgspec,val: parseInt(value)});
